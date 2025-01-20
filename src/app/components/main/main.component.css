@@ -1,0 +1,174 @@
+.main{
+  margin-top: 8px;
+}
+.main__product-list{
+  border-radius: 4px;
+  padding:7px 12px;
+  border: none;
+  background: white;
+  font-size: 13px;
+  display: flex;
+  gap: 2px;
+  align-items: center;
+  flex-direction: row;
+  font-weight: 400;
+  line-height: 18px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: var(--gray-color);
+}
+.main__product-task{
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+.main__type-tasks{
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  height: 36px;
+  margin-top: 8px;
+  border-bottom: 1px solid #E0E0E0;
+}
+.main__type-task{
+  font-size: 14px;
+  font-weight: 400;
+  padding: 7px 8px;
+  line-height: 21px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: var(--gray-color);
+}
+.active{
+  color: var(--blue-color);
+  border-bottom: 1px solid var(--blue-color);
+  height: 22px;
+}
+.main__left-block{
+  display: flex;
+  width: 880px;
+  flex-direction: column;
+}
+.main__quantity{
+  display: flex;
+  border:none;
+  align-items: center;
+  margin: 16px 0 8px 0;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
+.main__line{
+  display: flex;
+  gap: 6px;
+}
+.main__segment {
+  flex-grow: 0.5;
+  width: 209px;
+  height: 2px;
+  background-color: #4CAF50;
+}
+.main__segment:nth-child(2) {
+  background-color: #ddd; /* Цвет выделенной части */
+  flex-grow: 0.5; /* Ширина выделенной части */
+}
+.main__segment:nth-child(3) {
+  background-color: #ddd; /* Цвет выделенной части */
+  flex-grow: 0.5; /* Ширина выделенной части */
+}
+
+.main__segment:nth-child(4) {
+  background-color:#ddd ; /* Прозрачный промежуток */
+  flex-grow: 0.5; /* Ширина прозрачного промежутка */
+}
+
+.main__segment:last-child {
+  background-color: #ddd; /* Обычный цвет */
+}
+.main__tasks{
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px
+}
+.main__task{
+  padding: 12px;
+  background: #fff;
+}
+.main__question{
+  display: flex;
+  gap: 8px;
+  position: relative;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.main__developer{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 13px;
+}
+.main__author{
+  display: flex;
+  align-items: center;
+  gap:4px
+}
+.main__code-question{
+  position: absolute;
+  right: 0;
+}
+.main__block-question{
+  display: flex;
+  gap: 32px;
+}
+.main__description-question{
+  font-size: 14px;
+  color: #242424;
+  font-weight: 500;
+  line-height: 21px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
+
+.main__line-active{
+  display: flex;
+  gap: 6px;
+}
+.main__segment-green {
+  background-color: #4CAF50;
+  flex-grow: 0.5;
+  width: 209px;
+}
+.main__segment-blue {
+  background-color: var(--blue-color); /* Цвет выделенной части */
+  flex-grow: 0.5;
+  width: 209px;
+}
+
+.main__segment:nth-child(4) {
+  background-color:#ddd ; /* Прозрачный промежуток */
+  flex-grow: 0.5; /* Ширина прозрачного промежутка */
+  width: 209px;
+}
+.main__right-block{
+  width: 100%;
+}
+.main__quantity-active{
+  display: flex;
+  align-items: center;
+  margin: 0 0 8px 0;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: left;
+  text-underline-position: from-font;
+  color: var(--blue-color);
+  text-decoration-skip-ink: none;
+}
