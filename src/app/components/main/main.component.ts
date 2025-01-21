@@ -15,9 +15,24 @@ registerLocaleData(localeRu);
   templateUrl: './main.component.html',
   styleUrl: './main.component.css'
 })
-export class MainComponent {
+export class MainComponent implements OnInit {
   elementsVisibility = [true, true, true, true];
 
+  widthScreen!:number
+
+  hiddenQuestion:string = 'Не отображается текст "Пока нет вопросов", если Заказчик откроет Вопрос...'
+
+  ngOnInit() {
+    this.widthScreen = window.innerWidth
+    if (window.innerWidth <= 400) {
+      this.elementsVisibility = [true,false,true,true]
+      this.onPause = this.onPause.slice(0,2)
+      this.myTask = this.myTask = [
+        {name:'Создание нового чата или вопроса по процедуре',url: '/icon_task.png',code: 'TR-333'},
+        {name:'Загрузка списка вопросов глючит',url: '/bug116_16.png',code: 'TR-334'}
+      ]
+    }
+  }
   showElement(index: number) {
     this.elementsVisibility[index] = !this.elementsVisibility[index];
   }
@@ -178,5 +193,19 @@ export class MainComponent {
       iconStatus: '/ic_StatusTask_16.png'
     },
   ]
+
+
+  tabs = [
+    { name: 'На согласование', count: 1 },
+    { name: 'На ревью', count: 3 },
+    { name: 'Для работы', count: 11 },
+    { name: 'Черновики', count: 2 },
+  ];
+
+  activeTabIndex = 2; // Устанавливаем активный таб по умолчанию
+
+  selectTab(index: number): void {
+    this.activeTabIndex = index;
+  }
 
 }
