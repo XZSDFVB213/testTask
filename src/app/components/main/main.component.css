@@ -18,6 +18,38 @@
   text-decoration-skip-ink: none;
   color: var(--gray-color);
 }
+.main__product-container{
+  width: 228px;
+}
+.main__product-menu{
+  flex-direction: column;
+  display: flex;
+  margin-top: 8px;
+  box-shadow: 0 21px 26px 0 #0000001A;
+  background: #fff;
+  list-style: none;
+  border: 1px solid #EFEFEF;
+  padding: 16px 8px 12px 8px;
+  gap: 16px;
+  border-radius: 4px;
+  opacity: 1;
+  li:first-child{
+    padding: 0 0 0 16px;
+  }
+}
+.main__product-link{
+  color: black;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  line-height: 18px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  text-decoration: none;
+}
 .main__product-task{
   display: flex;
   gap: 12px;
