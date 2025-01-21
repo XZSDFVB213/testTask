@@ -1,0 +1,40 @@
+<div class="main__left-block">
+  <ul class="main__type-tasks" *ngIf="widthScreen>400">
+    <li class="main__type-task">На согласование: 1</li>
+    <li class="main__type-task">На ревью: 3</li>
+    <li class="main__type-task active">Для работы: 16</li>
+    <li class="main__type-task">Черновики: 2</li>
+  </ul>
+  <button class="main__quantity" (click)="showElement(0)"><img ngSrc="/arrow-icon.png" alt="arrow-icon" height="6" width="10">
+    Мои:{{myTask.length}} </button>
+  <div class="main__tasks" *ngIf="elementsVisibility[0]" >
+    <div class="main__task" *ngFor='let task of myTask'>
+      <div class="main__question"><img [src]="task.url"  alt="icon-task" height="17" width="16"> <p class="main__description-question">{{task.name}}</p> <p class="main__code-question">{{task.code}}</p></div>
+      <div class="main__line">
+        <div class="main__segment"></div>
+        <div class="main__segment"></div>
+        <div class="main__segment"></div>
+        <div class="main__segment"></div>
+      </div>
+      <div class="main__developer"><img ngSrc="/ic_StatusTask_16.png" alt="status" height="16" width="16"><div class="main__author">
+        <img ngSrc="/profile-icon.png" alt="" height="16" width="16">Вильгельмина Ш.</div></div>
+    </div>
+  </div>
+  <button class="main__quantity" (click)="showElement(1)"><img ngSrc="/arrow-icon.png" alt="arrow-icon" height="6" width="10">
+    Не назначенные: {{ notAssigned.length }}</button>
+  <div class="main__not-assigned" *ngIf="elementsVisibility[1]">
+    <div class="main__tasks" >
+      <div class="main__task" *ngFor='let task of notAssigned'>
+        <div class="main__question"><img [src]="task.url"  alt="icon-task" height="17" width="16"> <p class="main__description-question">{{task.name}}</p><p class="main__code-question">{{task.code}}</p></div>
+        <div class="main__line">
+          <div class="main__segment"></div>
+          <div class="main__segment"></div>
+          <div class="main__segment"></div>
+          <div class="main__segment"></div>
+        </div>
+        <div class="main__developer"><img [src]="task.iconStatus"  alt="status" height="16" width="16"><div class="main__author">
+          <img ngSrc="/not-auth.png" alt="" height="16" width="16">Вильгельмина Ш.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
