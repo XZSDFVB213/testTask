@@ -1,11 +1,21 @@
-import { Component } from '@angular/core';
+import {Component, ViewEncapsulation} from '@angular/core';
+import {NgClass, NgOptimizedImage, NgStyle} from '@angular/common';
 
 @Component({
   selector: 'app-header-mobile',
-  imports: [],
+  imports: [
+    NgClass
+  ],
+  standalone:true,
   templateUrl: './header-mobile.component.html',
-  styleUrl: './header-mobile.component.css'
+  styleUrl: './header-mobile.component.scss',
+  encapsulation: ViewEncapsulation.ShadowDom,
 })
 export class HeaderMobileComponent {
 
+  public activeIndex = 2
+
+  public toggleActive(index:number) {
+    this.activeIndex = index;
+  }
 }

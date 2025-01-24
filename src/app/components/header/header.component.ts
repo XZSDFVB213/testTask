@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {DatePipe, NgOptimizedImage,} from '@angular/common';
+import {DatePipe, NgOptimizedImage, NgStyle,} from '@angular/common';
 
 
 @Component({
@@ -7,18 +7,34 @@ import {DatePipe, NgOptimizedImage,} from '@angular/common';
   imports: [
     DatePipe,
     NgOptimizedImage,
+    NgStyle,
   ],
-  standalone:true,
+  standalone: true,
   templateUrl: './header.component.html',
-  styleUrl: './header.component.css'
+  styleUrl: './header.component.scss'
 })
-export class HeaderComponent implements OnInit{
-  time: Date = new Date();
-  hiddenTask: string = 'Не отображается текст "Пока нет вопросов", если...';
-  ngOnInit() {
-      setInterval(()=>{
-        this.time = new Date()
-      },5000)
-    }
+export class HeaderComponent implements OnInit {
+  public time: Date = new Date();
 
+  public hidden: boolean = true;
+
+  public hiddenTask: string = 'Не отображается текст "Пока нет вопросов", если Заказчик откроет Вопросы по процедуре, в которой нет ни одного вопроса если Заказчик откроет Вопросы по процедуре, в которой нет ни одного вопроса';
+
+  public showFull() {
+    this.hidden = !this.hidden
+  }
+
+  ngOnInit() {
+    setInterval(() => {
+      this.time = new Date()
+    }, 5000)
+  }
+
+  public getStyles(): { [key: string]: string } {
+    if (this.hidden) {
+      return {'height': '18px', overflow: 'hidden'};
+    } else {
+      return this.hidden ? {} : {'height': '50px', 'overflow-y': 'scroll'};
+    }
+  }
 }

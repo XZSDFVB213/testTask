@@ -1,1 +1,109 @@
-<p>right-block works!</p>
+<div class="main__right-block">
+  <div class="main__in-work">
+    <div class="main__quantity-active" *ngIf="widthScreen<=400">В работе:</div>
+    <div class="main__task" *ngFor="let work of inWork;let i = index" (mousemove)="handleMouseMove($event, i,'inWork')"
+         (mouseleave)="handleMouseLeave('inWork')">
+      <div class="main__quantity-active" *ngIf="widthScreen>400">В работе:</div>
+      <div class="road__to-task" [ngClass]="{ 'show': showRoadInWork  === i }">
+        <div class="road"><img ngSrc="/sp2-1.png" alt="" height="16" width="16">Simplanum / <img ngSrc="/Platform.png"
+                                                                                                 alt="" height="17"
+                                                                                                 width="16"> iOS / 1.12
+          /
+          <img ngSrc="/Feature.png" alt="" height="17" width="16">Вопрос по процедуре /
+        </div>
+        <div *ngIf="widthScreen <=400" class="main__private-cabinet">
+          <img ngSrc="/icon_task.png" alt="" height="17" width="16">ЛК клиента: история по "Вопрос по процедуре"
+        </div>
+      </div>
+      <div class="main__question"><img [src]="work.url" alt="icon-task" height="17" width="16">
+        <p class="main__description-question">{{ work.name }}</p>
+        <p class="main__code-question">{{ work.code }}</p></div>
+      <div class="main__line-active" [ngClass]="{ 'hidden': hoveredInWork  === i }" *ngIf="widthScreen>400">
+        <div class="main__segment"></div>
+        <div class="main__segment-green"></div>
+        <div class="main__segment-blue"></div>
+        <div class="main__segment"></div>
+      </div>
+      <div class="main__line-active" [ngClass]="{ 'hidden': hoveredInWork  === i }" *ngIf="widthScreen <= 400">
+        <div class="main__segment"></div>
+        <div class="main__segment-blue"></div>
+        <div class="main__segment"></div>
+        <div class="main__segment"></div>
+        <div class="main__segment"></div>
+      </div>
+      <div class="main__developer" [ngClass]="{ 'hidden': hoveredInWork  === i }"><img [src]="work.iconStatus"
+                                                                                       alt="status" height="16"
+                                                                                       width="16">
+        <div class="main__author">
+          <img ngSrc="/profile-icon.png" alt="" height="16" width="16">Вильгельмина Ш.
+        </div>
+      </div>
+      <div
+        class="main__buttons"
+        [ngClass]="{ 'visible': hoveredInWork  === i }">
+        <button class="main__button-first onPause"><img ngSrc="/onPause-icon.png" alt="" height="14" width="15">На паузу
+        </button>
+        <button class="main__button-second ready"><img ngSrc="/ready-icon.png" alt="" height="14" width="14">Готово
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="main__on-pause">
+    <button class="main__quantity" (click)="showElement(0)"><img [ngStyle]="getStyles(0)" ngSrc="/arrow-icon.png"
+                                                                 alt="arrow-icon" height="6" width="10">
+      На паузе: {{ onPause.length }}
+    </button>
+    <div class="main__tasks" *ngIf="elementsVisibility[0]">
+      <div class="main__task" *ngFor='let task of onPause; let i = index'
+           (mousemove)="handleMouseMove($event, i,'onPause')"
+           (mouseleave)="handleMouseLeave('onPause')">
+        <div class="road__to-task" [ngClass]="{ 'show': showRoadOnPause  === i }">
+          <div class="road"><img ngSrc="/sp2-1.png" alt="" height="16" width="16">Simplanum / <img ngSrc="/Platform.png"
+                                                                                                   alt="" height="17"
+                                                                                                   width="16"> iOS /
+            1.12 /
+            <img ngSrc="/Feature.png" alt="" height="17" width="16">Вопрос по процедуре /
+          </div>
+          <div *ngIf="widthScreen <=400" class="main__private-cabinet">
+            <img ngSrc="/icon_task.png" alt="" height="17" width="16">ЛК клиента: история по "Вопрос по процедуре"
+          </div>
+        </div>
+        <div class="main__question"><img [src]="task.url" alt="icon-task" height="17" width="16">
+          <p class="main__description-question">{{ task.name }}</p>
+          <p class="main__code-question">{{ task.code }}</p></div>
+        <div class="main__line" [ngClass]="{ 'hidden': hoveredOnPauseIndex  === i }">
+          <div class="main__segment"></div>
+          <div class="main__segment"></div>
+          <div class="main__segment"></div>
+          <div class="main__segment"></div>
+        </div>
+        <div class="main__developer" [ngClass]="{ 'hidden': hoveredOnPauseIndex  === i }"><img [src]="task.iconStatus"
+                                                                                               alt="status">
+          <div class="main__author">
+            <img ngSrc="/profile-icon.png" alt="" height="16" width="16">Вильгельмина Ш.
+          </div>
+        </div>
+        <div
+          class="main__buttons"
+          [ngClass]="{ 'visible': hoveredOnPauseIndex  === i }">
+          <button class="main__button-first"><img ngSrc="/icon-fix.png" alt="" height="14" width="14">Исправить</button>
+          <button class="main__button-second"><img ngSrc="/icon-start.png" alt="" height="14" width="14">В работу
+          </button>
+          <button class="main__button-third"><img ngSrc="/icon-accept.png" alt="" height="14" width="14">Принять
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="tabs-container" *ngIf="widthScreen <= 400">
+    <ul class="tabs">
+      <li
+        *ngFor="let tab of tabs; let i = index"
+        [class.active]="i === activeTabIndex"
+        (click)="selectTab(i)"
+      >
+        {{ tab.name }}: {{ tab.count }}
+      </li>
+    </ul>
+  </div>
+</div>

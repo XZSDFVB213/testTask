@@ -3,61 +3,6 @@
   <app-product></app-product>
   <div class="main__block-question">
     <app-left-block></app-left-block>
-    <div class="main__right-block">
-      <div class="main__in-work">
-        <div class="main__task" *ngIf="widthScreen > 400" >
-          <div class="main__quantity-active">В работе:</div>
-          <div class="main__question"><img src="/icon_task.png"  alt="icon-task" height="17" width="16"> <p class="main__description-question">Разработка нового интерфейса для панели управления</p> <p class="main__code-question">TR-323</p></div>
-          <div class="main__line-active">
-            <div class="main__segment"></div>
-            <div class="main__segment-green"></div>
-            <div class="main__segment-blue"></div>
-            <div class="main__segment"></div>
-          </div>
-          <div class="main__developer"><img ngSrc="/watched-icon.png" alt="status" height="16" width="16"><div class="main__author">
-            <img ngSrc="/profile-icon.png" alt="" height="16" width="16">Вильгельмина Ш.</div></div>
-        </div>
-        <div class="main__task" *ngIf="widthScreen <= 400">
-          <div class="main__quantity-active">В работе:</div>
-          <div class="main__question"><img src="/icon_task.png"  alt="icon-task" height="17" width="16"> <p class="main__description-question">{{hiddenQuestion}}</p> <p class="main__code-question">TR-323</p></div>
-          <div class="main__line-active">
-            <div class="main__segment"></div>
-            <div class="main__segment-green"></div>
-            <div class="main__segment-blue"></div>
-            <div class="main__segment"></div>
-          </div>
-          <div class="main__developer"><img ngSrc="/watched-icon.png" alt="status" height="16" width="16"><div class="main__author">
-            <img ngSrc="/profile-icon.png" alt="" height="16" width="16">Вильгельмина Ш.</div></div>
-        </div>
-      </div>
-      <div class="main__on-pause" >
-        <button class="main__quantity" (click)="showElement(2)"><img ngSrc="/arrow-icon.png" alt="arrow-icon" height="6" width="10">
-          На паузе: {{ onPause.length }}</button>
-        <div class="main__tasks" *ngIf="elementsVisibility[2]">
-          <div class="main__task" *ngFor='let task of onPause'>
-            <div class="main__question"><img [src]="task.url"  alt="icon-task" height="17" width="16"> <p class="main__description-question">{{task.name}}</p> <p class="main__code-question">{{task.code}}</p></div>
-            <div class="main__line">
-              <div class="main__segment"></div>
-              <div class="main__segment"></div>
-              <div class="main__segment"></div>
-              <div class="main__segment"></div>
-            </div>
-            <div class="main__developer"><img [src]="task.iconStatus" alt="status"><div class="main__author">
-              <img ngSrc="/profile-icon.png" alt="" height="16" width="16">Вильгельмина Ш.</div></div>
-          </div>
-        </div>
-      </div>
-      <div class="tabs-container" *ngIf="widthScreen <= 400">
-        <ul class="tabs">
-          <li
-            *ngFor="let tab of tabs; let i = index"
-            [class.active]="i === activeTabIndex"
-            (click)="selectTab(i)"
-          >
-            {{ tab.name }}: {{ tab.count }}
-          </li>
-        </ul>
-      </div>
-    </div>
+    <app-right-block></app-right-block>
   </div>
 </div>

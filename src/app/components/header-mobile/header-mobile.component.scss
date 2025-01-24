@@ -1,0 +1,54 @@
+$color_1: white;
+
+/*.badge:last-child {*/
+/*  background-color: var(--blue-color);*/
+/*}*/
+/* Активное состояние бейджа */
+/*.badge-active:last-child{*/
+/*  background-color: red;*/
+/*}*/
+.header {
+  display: flex;
+  width: 80%;
+  margin: 0 auto 32px;
+  justify-content: center;
+  box-shadow: 0 2px 6px 0 hsla(233, 100%, 12%, 0.05);
+  padding: 0 16px 0 16px;
+  border-radius: 30px;
+  backdrop-filter: blur(20px);
+  background-color: white;
+}
+.icon-container {
+  position: relative;
+  width: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+}
+.badge {
+  position: absolute;
+  top: 14px;
+  right: 17px;
+  width: 21px;
+  height: 19px;
+  background-color: var(--blue-color);
+  color: $color_1;
+  font-size: 11px;
+  text-align: center;
+  line-height: 20px;
+  border-radius: 50%;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.badge-active {
+  background-color: red;
+}
+.red {
+  background: red;
+}
+.badge-active-red {
+  background-color: var(--blue-color);
+}
+.active {
+  fill: var(--blue-color);
+}

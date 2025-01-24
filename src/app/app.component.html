@@ -1,2 +1,3 @@
-<app-header></app-header>
+<app-header *ngIf="windowWidth > 1080"></app-header>
 <app-main></app-main>
+<app-header-mobile *ngIf="windowWidth <= 400"></app-header-mobile>

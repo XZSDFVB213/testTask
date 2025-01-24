@@ -1,29 +1,41 @@
 <header class="header">
   <nav class="header__nav">
-      <a href="#" class="header__li"><img ngSrc="/rocket-icon.png" alt="rocket-icon" class="header__li-icon" height="17"
-                                          width="12">Главная</a>
-      <img ngSrc="/borderpng.png" alt="" height="31" width="1">
-      <a href="#" class="header__li"><img ngSrc="/folder-icon.png" alt="folder-icon" class="header__li-icon" height="13"
-                                          width="16">Проекты <img ngSrc="/arrow-icon.png" alt="arrow-icon" class="header__li-icon mr-left"
-                                                                  height="6" width="10"></a>
+    <a href="#" class="header__li"><img ngSrc="/rocket-icon.png" alt="rocket-icon" class="header__li-icon" height="17"
+                                        width="12">Главная</a>
     <img ngSrc="/borderpng.png" alt="" height="31" width="1">
-      <a href="#" class="header__li"><img ngSrc="/team-icon.png" alt="team-icon" class="header__li-icon" height="17"
-                                          width="16">Команда</a>
+    <a href="#" class="header__li"><img ngSrc="/folder-icon.png" alt="folder-icon" class="header__li-icon" height="13"
+                                        width="16">Проекты <img ngSrc="/arrow-icon.png" alt="arrow-icon"
+                                                                class="header__li-icon mr-left"
+                                                                height="6" width="10"></a>
     <img ngSrc="/borderpng.png" alt="" height="31" width="1">
-      <a href="#" class="header__li"><img ngSrc="/canban-icon.png" alt="canban-icon" class="header__li-icon" height="13"
-                                          width="16">Канбан</a>
+    <a href="#" class="header__li"><img ngSrc="/team-icon.png" alt="team-icon" class="header__li-icon" height="17"
+                                        width="16">Команда</a>
     <img ngSrc="/borderpng.png" alt="" height="31" width="1">
-      <a href="#" class="header__li"><img ngSrc="/calendar-icon.png" alt="calendar-icon" class="header__li-icon"
-                                          height="13" width="14">Итерации</a>
-      <button type="submit" class="header__submit">
-        <img src="/plus-icon.png" class="header__btn-icon" alt="plus-icon"><span>Создать</span> <img src="/arrow-icon.png" class="header__bnt-icon ">
-      </button>
+    <a href="#" class="header__li"><img ngSrc="/canban-icon.png" alt="canban-icon" class="header__li-icon" height="13"
+                                        width="16">Канбан</a>
+    <img ngSrc="/borderpng.png" alt="" height="31" width="1">
+    <a href="#" class="header__li"><img ngSrc="/calendar-icon.png" alt="calendar-icon" class="header__li-icon"
+                                        height="13" width="14">Итерации</a>
+    <button type="submit" class="header__submit">
+      <img src="/plus-icon.png" class="header__btn-icon" alt="plus-icon"><span>Создать</span> <img src="/arrow-icon.png"
+                                                                                                   class="header__bnt-icon ">
+    </button>
   </nav>
-    <div class="header__profile">
-      <div class="header__time"><img ngSrc="/clock-icon.png" alt="" height="15" width="14"><p class="roboto">{{time | date : 'HH:mm'}}</p></div>
-      <a href="#" class="header__main-task"><img ngSrc="/icon_task.png" alt="icon-task-dev" height="17" width="16"> {{hiddenTask}}</a>
-      <button class="header__chat"><img class="header__icon-chat" ngSrc="/chat-icob.png" alt="" height="17" width="18">
-        <img ngSrc="/badge.png" class="header__icon-badge" alt="" height="21" width="26"></button>
-      <a href="#" class="header__profile-icon"><img ngSrc="/profile-icon.png" alt="profile-icon" height="31" width="30"></a>
-    </div>
+  <div class="header__profile">
+    <div class="header__time"><img ngSrc="/clock-icon.png" alt="" height="15" width="14">
+      <p class="roboto">{{ time | date : 'HH:mm' }}</p></div>
+    <button class="header__main-task" (click)="showFull()">
+      <img
+        ngSrc="/icon_task.png"
+        alt="icon-task-dev"
+        height="17"
+        width="16"
+      />
+      <span [ngStyle]="getStyles()">{{ hiddenTask }}</span>
+    </button>
+    <button class="header__chat"><img class="header__icon-chat" ngSrc="/chat-icob.png" alt="" height="17" width="18">
+      <img ngSrc="/badge.png" class="header__icon-badge" alt="" height="21" width="26"></button>
+    <a href="#" class="header__profile-icon"><img ngSrc="/profile-icon.png" alt="profile-icon" height="31"
+                                                  width="30"></a>
+  </div>
 </header>

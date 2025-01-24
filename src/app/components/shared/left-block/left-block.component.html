@@ -5,35 +5,106 @@
     <li class="main__type-task active">Для работы: 16</li>
     <li class="main__type-task">Черновики: 2</li>
   </ul>
-  <button class="main__quantity" (click)="showElement(0)"><img ngSrc="/arrow-icon.png" alt="arrow-icon" height="6" width="10">
-    Мои:{{myTask.length}} </button>
-  <div class="main__tasks" *ngIf="elementsVisibility[0]" >
-    <div class="main__task" *ngFor='let task of myTask'>
-      <div class="main__question"><img [src]="task.url"  alt="icon-task" height="17" width="16"> <p class="main__description-question">{{task.name}}</p> <p class="main__code-question">{{task.code}}</p></div>
-      <div class="main__line">
+  <button class="main__quantity" (click)="showElement(0)"><img [ngStyle]="getStyles(0)" ngSrc="/arrow-icon.png"
+                                                               alt="arrow-icon" height="6" width="10">
+    Мои:{{ myTask.length }}
+  </button>
+  <div class="main__tasks" *ngIf="elementsVisibility[0]">
+    <div
+      class="main__task"
+      *ngFor="let task of myTask; let i = index"
+      (mousemove)="handleMouseMove($event, i, 'myTask')"
+      (mouseleave)="handleMouseLeave('myTask')"
+    >
+      <div class="road__to-task" [ngClass]="{ 'show': showRoadMyTask  === i }">
+        <div class="road"><img ngSrc="/sp2-1.png" alt="" height="16" width="16">Simplanum / <img ngSrc="/Platform.png"
+                                                                                                 alt="" height="17"
+                                                                                                 width="16"> iOS / 1.12
+          /
+          <img ngSrc="/Feature.png" alt="" height="17" width="16">Вопрос по процедуре /
+        </div>
+        <div *ngIf="widthScreen <=400" class="main__private-cabinet">
+          <img ngSrc="/icon_task.png" alt="" height="17" width="16">ЛК клиента: история по "Вопрос по процедуре"
+        </div>
+      </div>
+      <div class="main__question">
+        <img [src]="task.url" alt="icon-task" height="17" width="16">
+        <p class="main__description-question">{{ task.name }}</p>
+        <p class="main__code-question">{{ task.code }}</p>
+      </div>
+
+      <div
+        class="main__line"
+        [ngClass]="{ 'hidden': hoveredMyTaskIndex  === i }"
+      >
         <div class="main__segment"></div>
         <div class="main__segment"></div>
         <div class="main__segment"></div>
         <div class="main__segment"></div>
       </div>
-      <div class="main__developer"><img ngSrc="/ic_StatusTask_16.png" alt="status" height="16" width="16"><div class="main__author">
-        <img ngSrc="/profile-icon.png" alt="" height="16" width="16">Вильгельмина Ш.</div></div>
+      <div
+        class="main__developer"
+        [ngClass]="{ 'hidden': hoveredMyTaskIndex  === i }"
+      >
+        <img [src]="task.iconStatus" alt="status" height="16" width="16">
+        <div class="main__author">
+          <img src="/profile-icon.png" alt="" height="16" width="16">
+          Вильгельмина Ш.
+        </div>
+      </div>
+      <div
+        class="main__buttons"
+        [ngClass]="{ 'visible': hoveredMyTaskIndex  === i }">
+        <button class="main__button-first"><img ngSrc="/icon-fix.png" alt="" height="14" width="14">Исправить</button>
+        <button class="main__button-second"><img ngSrc="/icon-start.png" alt="" height="14" width="14">В работу</button>
+        <button class="main__button-third"><img ngSrc="/icon-accept.png" alt="" height="14" width="14">Принять</button>
+      </div>
     </div>
+
   </div>
-  <button class="main__quantity" (click)="showElement(1)"><img ngSrc="/arrow-icon.png" alt="arrow-icon" height="6" width="10">
-    Не назначенные: {{ notAssigned.length }}</button>
+  <button class="main__quantity" (click)="showElement(1)"><img [ngStyle]="getStyles(1)" ngSrc="/arrow-icon.png"
+                                                               alt="arrow-icon" height="6" width="10">
+    Не назначенные: {{ notAssigned.length }}
+  </button>
   <div class="main__not-assigned" *ngIf="elementsVisibility[1]">
-    <div class="main__tasks" >
-      <div class="main__task" *ngFor='let task of notAssigned'>
-        <div class="main__question"><img [src]="task.url"  alt="icon-task" height="17" width="16"> <p class="main__description-question">{{task.name}}</p><p class="main__code-question">{{task.code}}</p></div>
-        <div class="main__line">
+    <div class="main__tasks">
+      <div class="main__task" *ngFor='let task of notAssigned; let i = index'
+           (mousemove)="handleMouseMove($event, i, 'notAssigned')" (mouseleave)="handleMouseLeave('notAssigned')">
+        <div class="road__to-task" [ngClass]="{ 'show': showRoadNotAssigned  === i }">
+          <div class="road"><img ngSrc="/sp2-1.png" alt="" height="16" width="16">Simplanum / <img ngSrc="/Platform.png"
+                                                                                                   alt="" height="17"
+                                                                                                   width="16"> iOS /
+            1.12 /
+            <img ngSrc="/Feature.png" alt="" height="17" width="16">Вопрос по процедуре /
+          </div>
+          <div *ngIf="widthScreen <=400" class="main__private-cabinet">
+            <img ngSrc="/icon_task.png" alt="" height="17" width="16">ЛК клиента: история по "Вопрос по процедуре"
+          </div>
+        </div>
+        <div class="main__question"><img [src]="task.url" alt="icon-task" height="17" width="16">
+          <p class="main__description-question">{{ task.name }}</p>
+          <p class="main__code-question">{{ task.code }}</p></div>
+        <div class="main__line" [ngClass]="{ 'hidden': hoveredNotAssignedIndex  === i }">
           <div class="main__segment"></div>
           <div class="main__segment"></div>
           <div class="main__segment"></div>
           <div class="main__segment"></div>
         </div>
-        <div class="main__developer"><img [src]="task.iconStatus"  alt="status" height="16" width="16"><div class="main__author">
-          <img ngSrc="/not-auth.png" alt="" height="16" width="16">Вильгельмина Ш.</div></div>
+        <div class="main__developer" [ngClass]="{ 'hidden': hoveredNotAssignedIndex  === i }"><img
+          [src]="task.iconStatus" alt="status" height="16" width="16">
+          <div class="main__author">
+            <img ngSrc="/not-auth.png" alt="" height="16" width="16">Вильгельмина Ш.
+          </div>
+        </div>
+        <div
+          class="main__buttons"
+          [ngClass]="{ 'visible': hoveredNotAssignedIndex  === i }">
+          <button class="main__button-first"><img ngSrc="/icon-fix.png" alt="" height="14" width="14">Исправить</button>
+          <button class="main__button-second"><img ngSrc="/icon-start.png" alt="" height="14" width="14">В работу
+          </button>
+          <button class="main__button-third"><img ngSrc="/icon-accept.png" alt="" height="14" width="14">Принять
+          </button>
+        </div>
       </div>
     </div>
   </div>
